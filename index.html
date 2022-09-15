@@ -9,23 +9,20 @@
   <script type="text/babel">
     let counter = 0;
     const _root = document.getElementById("root");
-    const Span = () => <span id="sexy-span">Total Count: </span>;
-    const Button = () => (
-      <button
-        onClick={() => {
-          console.log("I have been clicked");
-          counter++;
-        }}
-      >
-        click me
-      </button>
-    );
+
+    function countUp() {
+      console.log("I have been clicked");
+      counter++;
+      ReactDOM.render(<Container />, _root);
+    }
+
     const Container = () => (
       <div>
-        <Span />
-        <Button />
+        <span>Total Count: {counter}</span>
+        <button onClick={countUp}>click me</button>
       </div>
-    );
+    ); //counter added but counter UI inside of span not updated
+
     ReactDOM.render(<Container />, _root);
   </script>
 </html>
