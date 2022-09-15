@@ -9,8 +9,8 @@
   <script type="text/babel">
     let counter = 0;
     const _root = document.getElementById("root");
-    const _span = React.createElement("span", null, "Total Count:");
-    const Button = (
+    const Span = () => <span id="sexy-span">Total Count: </span>;
+    const Button = () => (
       <button
         onClick={() => {
           console.log("I have been clicked");
@@ -20,8 +20,12 @@
         click me
       </button>
     );
-
-    const _container = React.createElement("div", null, [_span, Button]); //div required for redering 2 elements
-    ReactDOM.render(_container, _root);
+    const Container = () => (
+      <div>
+        <Span />
+        <Button />
+      </div>
+    );
+    ReactDOM.render(<Container />, _root);
   </script>
 </html>
