@@ -5,21 +5,23 @@
   </body>
   <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-  <script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
     let counter = 0;
     const _root = document.getElementById("root");
     const _span = React.createElement("span", null, "Total Count:");
-    const _btn = React.createElement(
-      "button",
-      {
-        onClick: () => {
+    const Button = (
+      <button
+        onClick={() => {
           console.log("I have been clicked");
           counter++;
-        },
-      },
-      "click me"
+        }}
+      >
+        click me
+      </button>
     );
-    const _container = React.createElement("div", null, [_span, _btn]); //div required for redering 2 elements
+
+    const _container = React.createElement("div", null, [_span, Button]); //div required for redering 2 elements
     ReactDOM.render(_container, _root);
   </script>
 </html>
