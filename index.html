@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <body></body>
+  <body>
+    <div id="root"></div>
+  </body>
   <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-  <script></script>
+  <script>
+    const _root = document.getElementById("root");
+    const _span = React.createElement(
+      "span",
+      {
+        id: "sexy-span",
+      },
+      "Total Count:"
+    ); //create span on JS, not HTML yet
+    ReactDOM.render(_span, _root); //render(show) span on HTML body
+  </script>
 </html>
