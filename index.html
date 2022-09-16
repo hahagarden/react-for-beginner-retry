@@ -9,12 +9,16 @@
   <script type="text/babel">
     function App() {
       const [minutes, setMinutes] = React.useState(0);
+      const [flipped, setFlipped] = React.useState(false);
       const onChange = (event) => {
         setMinutes(event.target.value);
         console.log(minutes);
       };
       const reset = () => {
         setMinutes(0);
+      };
+      const flip = () => {
+        setFlipped((current) => !current);
       };
       return (
         <div>
@@ -27,6 +31,7 @@
               type="number"
               onChange={onChange}
               value={minutes}
+              disabled={flipped} //{flipped===true}
             />
           </div>
           <div>
@@ -35,10 +40,12 @@
               id="hours"
               placeholder="Hours"
               type="number"
-              value={minutes / 60}
+              value={Math.round(minutes / 60)}
+              disabled={!flipped} //{flipped===false}
             />
           </div>
           <button onClick={reset}>reset</button>
+          <button onClick={flip}>flip</button>
         </div>
       );
     }
