@@ -8,7 +8,7 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     function App() {
-      const [minutes, setMinutes] = React.useState();
+      const [minutes, setMinutes] = React.useState(0);
       const onChange = (event) => {
         setMinutes(event.target.value);
         console.log(minutes);
@@ -16,16 +16,25 @@
       return (
         <div>
           <h1>Super Converter</h1>
-          <label htmlFor="minutes">minutes</label>
-          <input
-            id="minutes"
-            placeholder="Minutes"
-            type="number"
-            onChange={onChange}
-            value={minutes}
-          />
-          <label htmlFor="hours">hours</label>
-          <input id="hours" placeholder="Hours" type="number" />
+          <div>
+            <label htmlFor="minutes">minutes</label>
+            <input
+              id="minutes"
+              placeholder="Minutes"
+              type="number"
+              onChange={onChange}
+              value={minutes}
+            />
+          </div>
+          <div>
+            <label htmlFor="hours">hours</label>
+            <input
+              id="hours"
+              placeholder="Hours"
+              type="number"
+              value={minutes / 60}
+            />
+          </div>
         </div>
       );
     }
