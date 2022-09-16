@@ -13,6 +13,9 @@
         setMinutes(event.target.value);
         console.log(minutes);
       };
+      const reset = () => {
+        setMinutes(0);
+      };
       return (
         <div>
           <h1>Super Converter</h1>
@@ -35,6 +38,7 @@
               value={minutes / 60}
             />
           </div>
+          <button onClick={reset}>reset</button>
         </div>
       );
     }
