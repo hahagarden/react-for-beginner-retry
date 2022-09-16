@@ -7,22 +7,30 @@
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    const _root = document.getElementById("root");
-
     function App() {
-      const [counter, setCounter] = React.useState(0);
-      function countUp() {
-        //setCounter(counter + 1);
-        setCounter((current) => current + 1); //it is better for modifier function to have *function than direct variable
-      }
+      const [minutes, setMinutes] = React.useState();
+      const onChange = (event) => {
+        setMinutes(event.target.value);
+        console.log(minutes);
+      };
       return (
         <div>
-          <span>Total Count: {counter}</span>
-          <button onClick={countUp}>click me</button>
+          <h1>Super Converter</h1>
+          <label htmlFor="minutes">minutes</label>
+          <input
+            id="minutes"
+            placeholder="Minutes"
+            type="number"
+            onChange={onChange}
+            value={minutes}
+          />
+          <label htmlFor="hours">hours</label>
+          <input id="hours" placeholder="Hours" type="number" />
         </div>
       );
     }
 
-    ReactDOM.render(<App />, _root);
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
   </script>
 </html>
