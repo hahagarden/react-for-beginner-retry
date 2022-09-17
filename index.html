@@ -7,13 +7,10 @@
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    function Btn(props) {
-      /*
-      first argument is props{object} that has properties of component in JSX, banana is a key.
-      props equals { banana: "Save" } and { banana: "Confirm"}
-      */
+    function Btn({ banana, onClickProp }) {
       return (
         <button
+          onClick={onClickProp}
           style={{
             backgroundColor: "tomato",
             color: "white",
@@ -22,15 +19,21 @@
             borderRadius: 5,
           }}
         >
-          {props.banana}
+          {banana}
         </button>
+        /*
+        one onClickProp is a property of Btn component and 
+        the other onClick is an eventListener of button react element(JSX)
+        */
       );
     }
 
     const App = () => {
+      const [value, setValue] = React.useState("Save");
+      const clickEvent = () => setValue(value === "Save" ? "Revert" : "Save");
       return (
         <div>
-          <Btn banana="Save" />
+          <Btn banana={value} onClickProp={clickEvent} />
           <Btn banana="Confirm" />
         </div>
       );
