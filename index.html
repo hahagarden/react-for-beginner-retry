@@ -8,6 +8,13 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     function Btn({ banana, onClickProp }) {
+      console.log(banana, "was rendered");
+      /* 
+      Save was rendered
+      Confirm was rendered
+      if State of the component is changed, the whole component is re-rendered,
+      so both buttons including "Confirm" are re-rendered.
+      */
       return (
         <button
           onClick={onClickProp}
@@ -21,20 +28,17 @@
         >
           {banana}
         </button>
-        /*
-        one onClickProp is a property of Btn component and 
-        the other onClick is an eventListener of button react element(JSX)
-        */
       );
     }
+    const MemorizedBtn = React.memo(Btn); // new component, not to re-render if properties are not changed even if the State is updated.
 
     const App = () => {
       const [value, setValue] = React.useState("Save");
       const clickEvent = () => setValue(value === "Save" ? "Revert" : "Save");
       return (
         <div>
-          <Btn banana={value} onClickProp={clickEvent} />
-          <Btn banana="Confirm" />
+          <MemorizedBtn banana={value} onClickProp={clickEvent} />
+          <MemorizedBtn banana="Confirm" />
         </div>
       );
     };
