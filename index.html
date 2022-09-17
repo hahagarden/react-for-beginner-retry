@@ -7,7 +7,44 @@
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    const App = () => {};
+    function SaveBtn() {
+      return (
+        <button
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 5,
+          }}
+        >
+          Save
+        </button>
+      );
+    }
+    function ConfirmBtn() {
+      return (
+        <button
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 5,
+          }}
+        >
+          Confirm
+        </button>
+      );
+    }
+    const App = () => {
+      return (
+        <div>
+          <SaveBtn />
+          <ConfirmBtn />
+        </div>
+      );
+    };
     const root = document.getElementById("root");
     ReactDOM.render(<App />, root);
   </script>
