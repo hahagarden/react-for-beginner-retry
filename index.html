@@ -7,51 +7,8 @@
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    const Container = () => {
-      const [sentence, setSentence] = React.useState("");
-      const [inverted, setInverted] = React.useState(false);
-      const onChange = (event) => {
-        setSentence(event.target.value);
-      };
-      const onClick = () => {
-        setInverted((current) => !current);
-      };
-      const translation = [
-        "일찍 집 들어가",
-        "내 기분좀 살피세요",
-        "연락 잘 해",
-        "마음에 안들어",
-        "맛있는거 사줘",
-        "해석",
-      ];
-      return (
-        <div>
-          <label htmlFor="sentence">
-            {inverted ? "남자친구가 하는 말 " : "여자친구가 하는 말 "}
-          </label>
-          <input
-            id="sentence"
-            value={sentence}
-            type="string"
-            placeholder="궁금한 말을 입력하세요"
-            onChange={onChange}
-          />
-          <input
-            value={
-              inverted
-                ? sentence
-                : sentence.length > 0
-                ? translation[sentence.length % 5]
-                : translation[5]
-            }
-            placeholder="해석"
-            disabled="true"
-          />
-          <button onClick={onClick}>입장바꿔서</button>
-        </div>
-      );
-    };
+    const App = () => {};
     const root = document.getElementById("root");
-    ReactDOM.render(<Container />, root);
+    ReactDOM.render(<App />, root);
   </script>
 </html>

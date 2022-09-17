@@ -90,7 +90,60 @@
         </div>
       );
     }
-
+    function CoupleDialogue() {
+      const [sentence, setSentence] = React.useState("");
+      const [inverted, setInverted] = React.useState(false);
+      const onChange = (event) => {
+        setSentence(event.target.value);
+      };
+      const reset = () => {
+        setSentence("");
+      };
+      const invert = () => {
+        setInverted((current) => !current);
+      };
+      const translation = [
+        "일찍 집 들어가",
+        "내 기분좀 살피세요",
+        "연락 잘 해",
+        "말 걸지마",
+        "맛있는거 사줘",
+        "해석",
+      ];
+      return (
+        <div>
+          <div>
+            <label htmlFor="sentence">
+              {inverted ? "남자친구가 하는 말 " : "여자친구가 하는 말 "}
+            </label>
+            <input
+              id="sentence"
+              value={sentence}
+              type="string"
+              placeholder="궁금한 말을 입력하세요"
+              onChange={onChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="translator">해석 </label>
+            <input
+              id="translator"
+              value={
+                inverted
+                  ? sentence
+                  : sentence.length > 0
+                  ? translation[sentence.length % 5]
+                  : translation[5]
+              }
+              placeholder="해석"
+              disabled={true}
+            />
+          </div>
+          <button onClick={reset}>reset</button>
+          <button onClick={invert}>입장바꿔서</button>
+        </div>
+      );
+    }
     function App() {
       //root div Component
       const [index, setIndex] = React.useState("x");
@@ -104,11 +157,13 @@
             <option value="x">Select converter</option>
             <option value="0">Minutes&Hours</option>
             <option value="1">Kilometers&Miles</option>
+            <option value="2">CoupleDialogue</option>
           </select>
           <hr />
           {index === "x" ? "Please select your unit" : null}
           {index === "0" ? <MinutesToHours /> : null}
           {index === "1" ? <KilometersToMiles /> : null}
+          {index === "2" ? <CoupleDialogue /> : null}
         </div>
       );
     }
