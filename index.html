@@ -33,13 +33,27 @@
 
     const App = () => {
       const [value, setValue] = React.useState("Save");
+      const [search, setSearch] = React.useState("");
       const clickEvent = () => setValue(value === "Save" ? "Revert" : "Save");
+      const onChange = (event) => {
+        setSearch(event.target.value);
+      };
       React.useEffect(() => {
         console.log("runned only once at the first time, useEffect!");
       }, []);
       console.log("State updated so App re-rendered");
+      React.useEffect(() => {
+        if (search.length > 5) console.log("I am searching", search);
+      }, [search]);
+      // checking if condition is runned every time {search} is changed. [search] means React is watching {search} state.
       return (
         <div>
+          <input
+            type="string"
+            placeholder="search..."
+            onChange={onChange}
+            value={search}
+          />
           <MemorizedBtn banana={value} onClickProp={clickEvent} />
           <MemorizedBtn banana="Confirm" />
         </div>
