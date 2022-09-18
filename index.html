@@ -34,6 +34,10 @@
     const App = () => {
       const [value, setValue] = React.useState("Save");
       const clickEvent = () => setValue(value === "Save" ? "Revert" : "Save");
+      React.useEffect(() => {
+        console.log("runned only once at the first time, useEffect!");
+      }, []);
+      console.log("State updated so App re-rendered");
       return (
         <div>
           <MemorizedBtn banana={value} onClickProp={clickEvent} />
